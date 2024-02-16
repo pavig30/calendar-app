@@ -71,7 +71,7 @@ const Days: React.FC<DaysProps> = (props: DaysProps) => {
                 return (
                     isCurrentMonth ?
                         <div id={'event-' + weekIndex} key={'event-' + event.id} className="event has-event"
-                             style={{backgroundImage: `url(https://pavi-calendar-app.netlify.app/${event.imageFilenameThumb}.webp)`}}
+                             style={{backgroundImage: `url(https://pavi-calendar-events.netlify.app/${event.imageFilenameThumb}.webp)`}}
                              onClick={() => {
                                  handleDayClick(event, weekIndex, event.id);
                              }}
@@ -95,7 +95,7 @@ const Days: React.FC<DaysProps> = (props: DaysProps) => {
     const renderEvent = (event: Event) => {
         return (
             <div className="event-section">
-                <div className="event-detail" style={{backgroundImage: `url(https://pavi-calendar-app.netlify.app/${event.imageFilenameFull}.webp)`}}>
+                <div className="event-detail" style={{backgroundImage: `url(https://pavi-calendar-events.netlify.app/${event.imageFilenameFull}.webp)`}}>
                     <h2>{event.title}</h2>
                     <p>{event.summary}</p>
                     <p className='available'>
