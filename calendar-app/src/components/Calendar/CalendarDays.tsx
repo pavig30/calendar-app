@@ -12,12 +12,12 @@ const Days: React.FC<DaysProps> = (props: DaysProps) => {
     const totalDays = daysInMonth(props.currentMonth.getFullYear(), props.currentMonth.getMonth());
     const startDay = startOfMonth(props.currentMonth);
 
-    // Calculate the total number of days to display, including days from previous and next months
-    const totalDisplayDays = 35; // 5 rows of 7 days
-    const previousMonthDays = startDay === 0 ? 6 : startDay; // Days from previous month
-    const nextMonthDays = totalDisplayDays - totalDays - previousMonthDays; // Days from next month
+    // To find total number of days to display, which includes days from previous and next months
+    const totalDisplayDays = 35;
+    const previousMonthDays = startDay === 0 ? 6 : startDay;
+    const nextMonthDays = totalDisplayDays - totalDays - previousMonthDays;
 
-    // Dates from the previous month
+    // To calculate Dates for the previous month
     const previousMonth = new Date(props.currentMonth.getFullYear(), props.currentMonth.getMonth() - 1);
     const previousMonthTotalDays = daysInMonth(previousMonth.getFullYear(), previousMonth.getMonth());
     const previousMonthStart = previousMonthTotalDays - previousMonthDays + 1;
@@ -26,17 +26,17 @@ const Days: React.FC<DaysProps> = (props: DaysProps) => {
     const weeks: { day: number; month: string; }[][] = [];
     let days = [];
 
-    // Add days from the previous month
+    // Add days for previous month
     for (let i = previousMonthStart; i <= previousMonthTotalDays; i++) {
         days.push({ day: i, month: 'previous' });
     }
 
-    // Add days from the current month
+    // Add days for current month
     for (let i = 1; i <= totalDays; i++) {
         days.push({ day: i, month: 'current' });
     }
 
-    // Add days from the next month
+    // Add days for next month
     for (let i = 1; i <= nextMonthDays; i++) {
         days.push({ day: i, month: 'next' });
     }

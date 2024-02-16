@@ -27,7 +27,7 @@ const Calendar = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, [window.innerWidth]);
 
-    // Get year and month from parameters
+    // Get year and month
     useEffect(() => {
         const initialYear = searchParams.year;
         const initialMonth = Number(searchParams.month);
@@ -43,7 +43,7 @@ const Calendar = () => {
                 parseInt(String(initialMonth), 10) < 1 ||
                 parseInt(String(initialMonth), 10) > 12
             ) {
-                // Redirect to current date if invalid
+                // Handled for invalid date and redirect to current date
                 const today = new Date();
                 window.location.replace(`/${today.getFullYear()}/${today.getMonth() + 1}`);
                 return;
