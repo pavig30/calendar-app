@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { DaysProps, Event } from '../../types/types';
+import { DaysProps, Event } from '../../interfaces/interfaces';
 
 
 const Days: React.FC<DaysProps> = (props: DaysProps) => {
@@ -22,6 +22,7 @@ const Days: React.FC<DaysProps> = (props: DaysProps) => {
     const previousMonthTotalDays = daysInMonth(previousMonth.getFullYear(), previousMonth.getMonth());
     const previousMonthStart = previousMonthTotalDays - previousMonthDays + 1;
 
+    const url = process.env.REACT_APP_IMAGE_BASE_URL || '';
     const weeks: { day: number; month: string; }[][] = [];
     let days = [];
 
@@ -70,7 +71,7 @@ const Days: React.FC<DaysProps> = (props: DaysProps) => {
                 return (
                     isCurrentMonth ?
                         <div id={'event-' + weekIndex} key={'event-' + event.id} className="event has-event"
-                             style={{backgroundImage: `url(/assets/${event.imageFilenameThumb}.webp)`}}
+                             style={{backgroundImage: `url(https://pavi-calendar-app.netlify.app/${event.imageFilenameThumb}.webp)`}}
                              onClick={() => {
                                  handleDayClick(event, weekIndex, event.id);
                              }}
@@ -94,7 +95,7 @@ const Days: React.FC<DaysProps> = (props: DaysProps) => {
     const renderEvent = (event: Event) => {
         return (
             <div className="event-section">
-                <div className="event-detail" style={{backgroundImage: `url(/assets/${event.imageFilenameFull}.webp)`}}>
+                <div className="event-detail" style={{backgroundImage: `url(https://pavi-calendar-app.netlify.app/${event.imageFilenameFull}.webp)`}}>
                     <h2>{event.title}</h2>
                     <p>{event.summary}</p>
                     <p className='available'>

@@ -3,15 +3,15 @@ import './Calendar.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons'
 
-import {Event} from "../../types/types";
+import {Event} from "../../interfaces/interfaces";
 import {useNavigate, useParams} from "react-router-dom";
-import CalendarDays from '../CalendarDays/CalendarDays';
+import CalendarDays from './CalendarDays';
 
 const Calendar = () => {
     const navigate = useNavigate();
     const searchParams = useParams();
-    const [year, setYear] = useState<number>(Number(searchParams.year));
-    const [month, setMonth] = useState<number>(Number(searchParams.month));
+    const [year, setYear] = useState(Number(searchParams.year));
+    const [month, setMonth] = useState(Number(searchParams.month));
     const staticDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     const [weekDays, setWeekDays] = useState(staticDays);
